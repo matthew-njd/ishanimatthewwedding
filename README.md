@@ -1,3 +1,3 @@
-# Ishanimatthewwedding
+# Ishani and Matthew Wedding Site
 
-Website to RSVP to Ishani and Matthews Wedding! 🍾🥳
+Website for RSVP'ing to Ishani and Matthews Wedding! 🍾🥳
