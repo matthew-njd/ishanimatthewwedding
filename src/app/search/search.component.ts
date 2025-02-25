@@ -1,17 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { SupabaseService } from '../../_services/supabase.service';
+import { SupabaseService } from '../_services/supabase.service';
 import { map, Observable, startWith } from 'rxjs';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatOptionModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatOptionModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
