@@ -4,11 +4,10 @@ import { Invitee } from './_models/types';
 import { StepperComponent } from "./stepper/stepper.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [StepperComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [StepperComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   private supabaseService = inject(SupabaseService);
