@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SupabaseService } from './_services/supabase.service';
 import { Invitee } from './_models/types';
-import { StepperComponent } from "./stepper/stepper.component";
+import { SearchNameComponent } from "./search-name/search-name.component";
 
 @Component({
     selector: 'app-root',
-    imports: [StepperComponent],
+    standalone: true,
+    imports: [SearchNameComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

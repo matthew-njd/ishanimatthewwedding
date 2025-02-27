@@ -1,17 +1,28 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SupabaseService } from '../_services/supabase.service';
-import { map, Observable, startWith } from 'rxjs';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import {AsyncPipe} from '@angular/common';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-search-name',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './search.component.html',
-  styleUrl: './search.component.css'
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+  ],
+  templateUrl: './search-name.component.html',
+  styleUrl: './search-name.component.css'
 })
-export class SearchComponent implements OnInit {
+export class SearchNameComponent implements OnInit {
   private supabaseService = inject(SupabaseService);
   searchControl = new FormControl();
   names: string[] = [];
@@ -30,5 +41,3 @@ export class SearchComponent implements OnInit {
     return this.names.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
-
-
