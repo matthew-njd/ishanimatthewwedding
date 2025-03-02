@@ -1,12 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { SupabaseService } from '../_services/supabase.service';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import {AsyncPipe} from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { map, startWith } from 'rxjs/operators';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-search-name',
@@ -24,20 +24,27 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class SearchNameComponent implements OnInit {
   private supabaseService = inject(SupabaseService);
-  searchControl = new FormControl();
+
+  searchControl = new FormControl('', Validators.required);
   names: string[] = [];
   filteredNames!: Observable<string[]>;
+
+  @Output() selectedName = new EventEmitter<string>();
 
   async ngOnInit() {
     this.names = (await this.supabaseService.getNames('WeddingInvitees')).map(x => x.Name);
     this.filteredNames = this.searchControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map(value => this._filter(value || ''))
     );
+
+    this.searchControl.valueChanges.subscribe(value => {
+      this.selectedName.emit(value || '');
+    });
   }
 
   private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = value?.toLowerCase() || '';
     return this.names.filter(option => option.toLowerCase().includes(filterValue));
   }
 }

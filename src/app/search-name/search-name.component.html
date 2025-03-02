@@ -7,8 +7,8 @@
             [formControl]="searchControl"
             [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-        @for (option of filteredNames | async; track option) {
-        <mat-option [value]="option">{{option}}</mat-option>
+        @for (name of filteredNames | async; track name) {
+            <mat-option [value]="name">{{name}}</mat-option>
         }
     </mat-autocomplete>
 </mat-form-field>
