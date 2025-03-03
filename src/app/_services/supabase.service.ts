@@ -19,14 +19,16 @@ export class SupabaseService {
     });
   }
 
-  async getTable(table: string) {
-    const { data, error } = await this.supabase.from(table).select('Name, IsInvitedMehndi, IsInvitedGrahShanti, IsInvitedCeremony, IsInvitedReception');
+  async getInvitedEvents(name: string) {
+    const { data, error } = await this.supabase.from('WeddingInvitees')
+      .select('Id, IsInvitedMehndi, IsInvitedGrahShanti, IsInvitedCeremony, IsInvitedReception')
+      .eq('Name', name);
     if (error) throw error;
     return data;
   }
 
-  async getNames(table: string) {
-    const { data, error } = await this.supabase.from(table).select('Name');
+  async getNames() {
+    const { data, error } = await this.supabase.from('WeddingInvitees').select('Name');
     if (error) throw error;
     return data;
   }

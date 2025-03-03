@@ -2,11 +2,7 @@
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Select your Name</ng-template>
-        <mat-form-field class="input-field">
-            <app-search-name (selectedName)="onNameSelected($event)"></app-search-name>
-            <!-- <mat-label>Name</mat-label>
-            <input matInput placeholder="First name, Last name" formControlName="firstCtrl" required> -->
-        </mat-form-field>
+        <app-search-name class="input-field" (selectedName)="onNameSelected($event)"></app-search-name>
         <div>
             <button mat-button matStepperNext>Next</button>
         </div>

@@ -21,3 +21,11 @@ export interface Invitee {
     IsInvitedCeremony: boolean;
     IsInvitedReception: boolean;
 }
+
+export interface InvitedEvents {
+    Id: number;
+    IsInvitedMehndi: boolean;
+    IsInvitedGrahShanti: boolean;
+    IsInvitedCeremony: boolean;
+    IsInvitedReception: boolean;
+}

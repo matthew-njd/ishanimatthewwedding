@@ -32,7 +32,7 @@ export class SearchNameComponent implements OnInit {
   @Output() selectedName = new EventEmitter<string>();
 
   async ngOnInit() {
-    this.names = (await this.supabaseService.getNames('WeddingInvitees')).map(x => x.Name);
+    this.names = (await this.supabaseService.getNames()).map(x => x.Name);
     this.filteredNames = this.searchControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || ''))
