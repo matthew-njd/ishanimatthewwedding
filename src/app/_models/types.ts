@@ -15,15 +15,8 @@ export interface Database {
 }
 
 export interface Invitee {
-    Name: string;
-    IsInvitedMehndi: boolean;
-    IsInvitedGrahShanti: boolean;
-    IsInvitedCeremony: boolean;
-    IsInvitedReception: boolean;
-}
-
-export interface InvitedEvents {
     Id: number;
+    Name: string;
     IsInvitedMehndi: boolean;
     IsInvitedGrahShanti: boolean;
     IsInvitedCeremony: boolean;
